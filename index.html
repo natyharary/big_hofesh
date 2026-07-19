@@ -134,26 +134,6 @@ mark{background:#ffe9a8; color:inherit; padding:0 1px; border-radius:2px}
 }
 .empty p{margin:0 0 14px; font-size:1.02rem}
 
-/* ---------- checklist ---------- */
-.checklist{margin-block:26px 8px; background:#fff; border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow)}
-.checklist summary{
-  cursor:pointer; padding:14px 16px; font-weight:700; font-size:1.02rem;
-  list-style:none; display:flex; align-items:center; gap:8px;
-}
-.checklist summary::-webkit-details-marker{display:none}
-.checklist summary::after{content:"▾"; margin-inline-start:auto; font-size:.85rem; color:var(--ink-soft)}
-.checklist[open] summary::after{content:"▴"}
-.checklist summary:focus-visible{outline:2px solid var(--sea); outline-offset:-2px; border-radius:16px}
-.checklist ul{
-  margin:0; padding:0 16px 16px; list-style:none;
-  display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:7px;
-}
-.checklist li{
-  display:flex; align-items:center; gap:8px; font-size:.92rem;
-  background:var(--sand); border:1px solid var(--line); border-radius:9px; padding:7px 11px;
-}
-.checklist li::before{content:"☐"; font-size:1.05rem; color:var(--sea); flex:none}
-
 /* ---------- footer ---------- */
 footer{
   margin-top:30px; padding-block:26px 34px; text-align:center;
@@ -171,8 +151,6 @@ footer .roles strong{color:var(--ink)}
   footer .roles{display:block !important}
   .grid{grid-template-columns:repeat(2,1fr); gap:8px}
   .card{break-inside:avoid; page-break-inside:avoid; box-shadow:none; border-color:#bbb}
-  .checklist{break-inside:avoid}
-  .checklist[open] ul,.checklist ul{display:grid !important}
   a[href^="http"]::after{content:" (" attr(href) ")"; font-size:8pt; color:#555}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none !important; animation:none !important}}
@@ -233,10 +211,6 @@ footer .roles strong{color:var(--ink)}
     <button class="btn" type="button" data-reset>נקה סינון</button>
   </div>
 
-  <details class="checklist" id="checklist">
-    <summary>🎒 צ׳קליסט קיץ — מה לוקחים ליום בחוץ</summary>
-    <ul id="checklist-items"></ul>
-  </details>
 </main>
 
 <footer>
@@ -384,10 +358,9 @@ function reset(){
 
 /* ---------- init ---------- */
 buildChips();
-$("checklist-items").innerHTML = DATA.checklist.map(i => "<li>" + esc(i) + "</li>").join("");
 $("q").addEventListener("input", e => { state.q = e.target.value.trim().toLowerCase(); render(); });
 $("reset").addEventListener("click", reset);
-$("print").addEventListener("click", () => { $("checklist").open = true; window.print(); });
+$("print").addEventListener("click", () => window.print());
 document.querySelector("[data-reset]").addEventListener("click", reset);
 render();
 </script>
