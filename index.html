@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>המדריך הגדול לחופש הגדול 2026</title>
+<meta name="description" content="108 רעיונות לבילויים ופעילויות למשפחות עם ילדים בישראל — מצפון ועד דרום. מאת מורן בן דוד.">
+<style>
+:root{
+  --sea:#0e7490; --sea-dark:#0b5566; --sand:#fdf6e7; --sky1:#bfe9f5; --sky2:#e9f6fb;
+  --ink:#12303a; --ink-soft:#4a6572; --line:#d6e6ec; --card:#fff;
+  --free:#0f7b4f; --free-bg:#e4f5ec; --sym:#a75b0a; --sym-bg:#fdefdd;
+  --paid:#1f5fa8; --paid-bg:#e6effa; --tip-bg:#fff8e3; --tip-line:#f0c860;
+  --shadow:0 1px 2px rgba(18,48,58,.06),0 4px 14px rgba(18,48,58,.07);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; color:var(--ink); background:var(--sand);
+  font-family:"Assistant","Heebo","Segoe UI",Arial,sans-serif;
+  font-size:16px; line-height:1.6; -webkit-text-size-adjust:100%;
+}
+a{color:var(--sea-dark)}
+.wrap{max-width:1240px; margin-inline:auto; padding-inline:16px}
+
+/* ---------- header ---------- */
+header{
+  background:linear-gradient(165deg,var(--sky1) 0%,var(--sky2) 55%,var(--sand) 100%);
+  border-bottom:1px solid var(--line); padding-block:28px 24px; text-align:center;
+}
+header h1{margin:0 0 6px; font-size:clamp(1.6rem,5.2vw,2.5rem); line-height:1.2; letter-spacing:-.01em}
+.sub{margin:0 auto; max-width:44ch; color:var(--ink-soft); font-size:clamp(.94rem,2.6vw,1.05rem)}
+
+/* credit — must stay visible everywhere */
+.credit{
+  margin-top:16px; display:flex; flex-wrap:wrap; gap:8px 10px;
+  align-items:center; justify-content:center; font-size:.94rem;
+}
+.credit .by{font-weight:600}
+.social{
+  display:inline-flex; align-items:center; gap:5px; padding:5px 11px;
+  background:#fff; border:1px solid var(--line); border-radius:999px;
+  text-decoration:none; font-weight:600; font-size:.88rem; white-space:nowrap;
+}
+.social:hover,.social:focus-visible{border-color:var(--sea); color:var(--sea-dark)}
+.social svg{width:15px; height:15px; flex:none}
+
+/* ---------- toolbar ---------- */
+.toolbar{
+  position:sticky; top:0; z-index:20; background:rgba(253,246,231,.97);
+  backdrop-filter:blur(8px); border-bottom:1px solid var(--line);
+  padding-block:12px; box-shadow:0 2px 10px rgba(18,48,58,.05);
+}
+.search-row{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+#q{
+  flex:1 1 260px; min-width:0; padding:11px 14px; font:inherit; font-size:1rem;
+  border:1px solid var(--line); border-radius:12px; background:#fff; color:inherit;
+}
+#q:focus-visible{outline:2px solid var(--sea); outline-offset:1px; border-color:var(--sea)}
+.filters{margin-top:10px; display:flex; flex-direction:column; gap:8px}
+.chip-row{display:flex; flex-wrap:wrap; gap:6px; align-items:center}
+.chip-label{
+  font-size:.8rem; font-weight:700; color:var(--ink-soft);
+  margin-inline-end:2px; flex:none;
+}
+.chip{
+  font:inherit; font-size:.86rem; padding:6px 12px; border-radius:999px; cursor:pointer;
+  border:1px solid var(--line); background:#fff; color:var(--ink-soft);
+  display:inline-flex; align-items:center; gap:5px; line-height:1.4;
+}
+.chip:hover{border-color:var(--sea)}
+.chip:focus-visible{outline:2px solid var(--sea); outline-offset:1px}
+.chip[aria-pressed="true"]{background:var(--sea); border-color:var(--sea); color:#fff; font-weight:600}
+.chip .n{font-size:.76rem; opacity:.72; font-variant-numeric:tabular-nums}
+.chip.cost[aria-pressed="true"].free{background:var(--free); border-color:var(--free)}
+.chip.cost[aria-pressed="true"].sym{background:var(--sym); border-color:var(--sym)}
+.chip.cost[aria-pressed="true"].paid{background:var(--paid); border-color:var(--paid)}
+
+.status-row{
+  margin-top:10px; padding-top:9px; border-top:1px dashed var(--line);
+  display:flex; flex-wrap:wrap; gap:8px 14px; align-items:center; font-size:.86rem;
+}
+#count{font-weight:700; font-variant-numeric:tabular-nums}
+.btn{
+  font:inherit; font-size:.84rem; padding:6px 13px; border-radius:9px; cursor:pointer;
+  border:1px solid var(--line); background:#fff; color:var(--ink-soft); font-weight:600;
+}
+.btn:hover{border-color:var(--sea); color:var(--sea-dark)}
+.btn:focus-visible{outline:2px solid var(--sea); outline-offset:1px}
+/* sticky mini-credit so attribution survives mid-scroll */
+.bar-credit{
+  margin-inline-start:auto; display:flex; align-items:center; gap:7px;
+  font-size:.8rem; color:var(--ink-soft);
+}
+.bar-credit a{font-weight:700; text-decoration:none; white-space:nowrap}
+.bar-credit a:hover{text-decoration:underline}
+
+/* ---------- cards ---------- */
+main{padding-block:20px 8px}
+.grid{display:grid; grid-template-columns:1fr; gap:14px; padding:0; margin:0; list-style:none}
+@media(min-width:720px){ .grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px} }
+
+.card{
+  background:var(--card); border:1px solid var(--line); border-radius:16px;
+  padding:16px 16px 14px; box-shadow:var(--shadow);
+  display:flex; flex-direction:column; gap:9px;
+}
+.card h2{margin:0; font-size:1.14rem; line-height:1.3}
+.badges{display:flex; flex-wrap:wrap; gap:6px}
+.badge{
+  font-size:.76rem; font-weight:700; padding:3px 9px; border-radius:999px;
+  border:1px solid transparent; white-space:nowrap;
+}
+.badge.region{background:#eaf4f8; color:var(--sea-dark); border-color:#cfe6ee}
+.badge.free{background:var(--free-bg); color:var(--free); border-color:#bfe6d2}
+.badge.sym{background:var(--sym-bg); color:var(--sym); border-color:#f2d6ab}
+.badge.paid{background:var(--paid-bg); color:var(--paid); border-color:#c9dcf3}
+.meta{
+  margin:0; font-size:.84rem; color:var(--ink-soft);
+  display:flex; flex-wrap:wrap; gap:4px 10px;
+}
+.meta span{display:inline-flex; align-items:center; gap:4px}
+.why{margin:0; font-size:.94rem}
+.cost-note{margin:0; font-size:.8rem; color:var(--ink-soft); font-style:italic}
+.tip{
+  margin:auto 0 0; background:var(--tip-bg); border:1px solid var(--tip-line);
+  border-radius:11px; padding:9px 11px; font-size:.88rem;
+}
+.tip b{display:block; font-size:.78rem; margin-bottom:2px; color:#8a6100}
+mark{background:#ffe9a8; color:inherit; padding:0 1px; border-radius:2px}
+
+.empty{
+  text-align:center; padding:48px 16px; color:var(--ink-soft);
+  background:#fff; border:1px dashed var(--line); border-radius:16px;
+}
+.empty p{margin:0 0 14px; font-size:1.02rem}
+
+/* ---------- checklist ---------- */
+.checklist{margin-block:26px 8px; background:#fff; border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow)}
+.checklist summary{
+  cursor:pointer; padding:14px 16px; font-weight:700; font-size:1.02rem;
+  list-style:none; display:flex; align-items:center; gap:8px;
+}
+.checklist summary::-webkit-details-marker{display:none}
+.checklist summary::after{content:"▾"; margin-inline-start:auto; font-size:.85rem; color:var(--ink-soft)}
+.checklist[open] summary::after{content:"▴"}
+.checklist summary:focus-visible{outline:2px solid var(--sea); outline-offset:-2px; border-radius:16px}
+.checklist ul{
+  margin:0; padding:0 16px 16px; list-style:none;
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:7px;
+}
+.checklist li{
+  display:flex; align-items:center; gap:8px; font-size:.92rem;
+  background:var(--sand); border:1px solid var(--line); border-radius:9px; padding:7px 11px;
+}
+.checklist li::before{content:"☐"; font-size:1.05rem; color:var(--sea); flex:none}
+
+/* ---------- footer ---------- */
+footer{
+  margin-top:30px; padding-block:26px 34px; text-align:center;
+  background:linear-gradient(0deg,var(--sky1),var(--sky2)); border-top:1px solid var(--line);
+}
+footer .roles{max-width:56ch; margin:14px auto 0; font-size:.9rem; color:var(--ink-soft)}
+footer .roles strong{color:var(--ink)}
+
+/* ---------- print ---------- */
+@media print{
+  body{background:#fff; font-size:11pt}
+  .toolbar,.btn,#print{display:none !important}
+  header,footer{background:#fff !important}
+  .credit,.roles{display:flex !important; visibility:visible !important} /* credit always prints */
+  footer .roles{display:block !important}
+  .grid{grid-template-columns:repeat(2,1fr); gap:8px}
+  .card{break-inside:avoid; page-break-inside:avoid; box-shadow:none; border-color:#bbb}
+  .checklist{break-inside:avoid}
+  .checklist[open] ul,.checklist ul{display:grid !important}
+  a[href^="http"]::after{content:" (" attr(href) ")"; font-size:8pt; color:#555}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none !important; animation:none !important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>המדריך הגדול לחופש הגדול 2026</h1>
+    <p class="sub">רעיונות לבילויים ופעילויות למשפחות עם ילדים – מצפון ועד דרום</p>
+    <p class="credit">
+      <span class="by">המדריך מאת מורן בן דוד</span>
+      <a class="social" href="https://www.instagram.com/momibd" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+        @Momibd
+      </a>
+      <a class="social" href="https://www.tiktok.com/@momibd1" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 2h-3v13.2a2.7 2.7 0 1 1-2.2-2.65V9.4a6 6 0 1 0 5.2 5.94V8.9a6.6 6.6 0 0 0 3.8 1.2V7a3.8 3.8 0 0 1-3.8-3.8V2z"/></svg>
+        @Momibd1
+      </a>
+    </p>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="wrap">
+    <div class="search-row">
+      <input id="q" type="search" autocomplete="off"
+             placeholder="חיפוש פעילות, מקום או מילת מפתח..."
+             aria-label="חיפוש חופשי בפעילויות">
+    </div>
+    <div class="filters">
+      <div class="chip-row" id="regions" role="group" aria-label="סינון לפי אזור">
+        <span class="chip-label">אזור</span>
+      </div>
+      <div class="chip-row" id="costs" role="group" aria-label="סינון לפי עלות">
+        <span class="chip-label">עלות</span>
+      </div>
+    </div>
+    <div class="status-row">
+      <span id="count" role="status" aria-live="polite"></span>
+      <button class="btn" id="reset" type="button">נקה סינון</button>
+      <button class="btn" id="print" type="button">הדפסה</button>
+      <span class="bar-credit">
+        מאת מורן בן דוד ·
+        <a href="https://www.instagram.com/momibd" target="_blank" rel="noopener noreferrer">@Momibd</a>
+        <a href="https://www.tiktok.com/@momibd1" target="_blank" rel="noopener noreferrer">@Momibd1</a>
+      </span>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <ul class="grid" id="grid"></ul>
+  <div class="empty" id="empty" hidden>
+    <p>לא נמצאו פעילויות. נסו לנקות סינון.</p>
+    <button class="btn" type="button" data-reset>נקה סינון</button>
+  </div>
+
+  <details class="checklist" id="checklist">
+    <summary>🎒 צ׳קליסט קיץ — מה לוקחים ליום בחוץ</summary>
+    <ul id="checklist-items"></ul>
+  </details>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="credit">
+      <span class="by">כל התוכן וההמלצות מאת מורן בן דוד</span>
+      <a class="social" href="https://www.instagram.com/momibd" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+        @Momibd
+      </a>
+      <a class="social" href="https://www.tiktok.com/@momibd1" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 2h-3v13.2a2.7 2.7 0 1 1-2.2-2.65V9.4a6 6 0 1 0 5.2 5.94V8.9a6.6 6.6 0 0 0 3.8 1.2V7a3.8 3.8 0 0 1-3.8-3.8V2z"/></svg>
+        @Momibd1
+      </a>
+    </p>
+    <p class="roles">
+      המדריך המקורי, כל התוכן, ההמלצות והטיפים הם של <strong>מורן בן דוד</strong>.
+      האתר נבנה על ידי <strong>נתי הררי</strong> כדי להנגיש את המדריך ולאפשר חיפוש וסינון נוחים —
+      נתי אינו מחבר התוכן.
+    </p>
+  </div>
+</footer>
+
+<script>
+const DATA = {"meta":{"title":"המדריך הגדול לחופש הגדול 2026","subtitle":"100 רעיונות לבילויים ופעילויות למשפחות עם ילדים – מצפון ועד דרום","credit":"מורן בן דוד – @Momibd","legend":{"regions":["צפון","חיפה והכרמל","השרון","מרכז","ירושלים","דרום","אילת","פעילויות בבית"],"cost":["חינם","בתשלום","בתשלום סמלי"],"fields":{"name":"שם","region":"אזור","category":"סוג","ages":"גילאים","cost":"עלות","duration":"משך","why":"למה כדאי","tip":"הטיפ של מורן"}}},"activities":[{"name":"פארק המעיינות","region":"צפון","category":"מעיינות וטבע","ages":"כל המשפחה","cost":"חינם","cost_note":"השכרת אופניים/רכב גולף בתשלום","duration":"3–5 שעות","why":"אזור מרהיב עם מעיינות צלולים, מסלולי הליכה קלים ואווירה מושלמת ליום קיץ.","tip":"להגיע מוקדם כדי למצוא חניה קרובה וליהנות משקט יחסי במעיינות."},{"name":"גן גורו","region":"צפון","category":"פארק בעלי חיים","ages":"כל המשפחה","cost":"בתשלום","duration":"2–3 שעות","why":"מפגש מקרוב עם קנגורו, תוכים וחיות אוסטרליות באווירה ייחודית.","tip":"רכשו כרטיסים מראש בחופשות כדי לחסוך זמן בתור."},{"name":"גן לאומי בית שאן","region":"צפון","category":"אתר ארכיאולוגי","ages":"כל המשפחה","cost":"בתשלום","duration":"2–3 שעות","why":"אחד האתרים המרשימים בארץ עם עיר רומית עתיקה ומופע אור-קולי בערב.","tip":"לבוא בשעות השקיעה – פחות חם ויותר חווייתי."},{"name":"מעיין חרוד","region":"צפון","category":"פארק מים וטבע","ages":"כל המשפחה","cost":"בתשלום סמלי","duration":"2–4 שעות","why":"פארק גדול עם בריכות טבעיות, מדשאות ופינות פיקניק מוצלות.","tip":"להביא אוכל מהבית ולתכנן יום שלם במקום."},{"name":"רוב רוי (כפר רופין)","region":"צפון","category":"שיט ואטרקציית מים","ages":"3+","cost":"בתשלום","duration":"2–3 שעות","why":"שיט בסירות קאנו אינדיאניות על נהר הירדן, פינות ישיבה מוצלות ואווירה רגועה לכל המשפחה.","tip":"מומלץ להגיע עם בגדי ים ובגדים להחלפה – הילדים בדרך כלל לא נשארים יבשים."},{"name":"פארק המים חוף גיא (טבריה)","region":"צפון","category":"פארק מים","ages":"כל המשפחה","cost":"בתשלום","duration":"חצי יום–יום שלם","why":"פארק מים גדול על שפת הכנרת עם מגלשות, בריכות, מתקני מים ואזורי משחק לכל המשפחה.","tip":"מומלץ להגיע עם פתיחת הפארק כדי ליהנות מהמגלשות לפני התורים."},{"name":"פארק נוף הגליל","region":"צפון","category":"פארק עירוני","ages":"כל המשפחה","cost":"חינם","duration":"שעה–3 שעות","why":"פארק מטופח עם מתקני משחקים, מדשאות רחבות, מזרקות, שבילי הליכה ותצפיות יפות על הגליל.","tip":"מומלץ להגיע בשעות אחר הצהריים כשקריר יותר ולשלב פיקניק משפחתי."},{"name":"אקווה כיף (טבריה)","region":"צפון","category":"פארק מים צף","ages":"6+","cost":"בתשלום","duration":"שעה–שעתיים","why":"פארק מים צף בלב הכנרת עם מסלולי מכשולים, קפיצות, טיפוס ומגלשות – חוויה ספורטיבית ומרעננת.","tip":"מומלץ להזמין מקום מראש בחודשי הקיץ ולהגיע כ-30 דקות לפני שעת הכניסה."},{"name":"בניאס (שמורת טבע)","region":"צפון","category":"מסלול מים וטבע","ages":"5+","cost":"בתשלום","duration":"2–3 שעות","why":"אחד הנחלים היפים בארץ עם מפלים, מים זורמים ומסלול מוצל בטבע ירוק.","tip":"להגיע מוקדם כדי ליהנות משקט ומפחות עומס במסלול."},{"name":"נחל דן","region":"צפון","category":"שמורת טבע ומים","ages":"כל המשפחה","cost":"בתשלום","duration":"2–3 שעות","why":"מים צלולים, מסלולים קצרים ונעימים גם לילדים קטנים.","tip":"מושלם לשילוב עם ביקור בבניאס באותו יום."},{"name":"חורשת טל","region":"צפון","category":"פארק טבע וקמפינג","ages":"כל המשפחה","cost":"בתשלום","duration":"חצי יום–יום שלם","why":"מדשאות ענק, בריכות טבעיות ואווירה מושלמת לפיקניק וקמפינג.","tip":"להזמין מקום מראש בקיץ – המקום מתמלא מהר."},{"name":"אגמון החולה","region":"צפון","category":"טבע וצפרות","ages":"כל המשפחה","cost":"בתשלום","duration":"2–4 שעות","why":"אחד מאתרי הטבע המרשימים בארץ – אגמים, אלפי ציפורים, שבילי הליכה ואפשרות לשכור אופניים או רכב גולף.","tip":"להגיע מוקדם בבוקר – זו השעה הכי טובה לראות ציפורים פעילות וגם ליהנות ממזג אוויר נעים."},{"name":"חמי טבריה","region":"צפון","category":"מרחצאות חמים, בריכות וספא","ages":"כל המשפחה","cost":"בתשלום","duration":"2–4 שעות","why":"מתחם מרחצאות ותיק על שפת הכנרת עם בריכות מים תרמו-מינרליים, בריכות שחייה ואזורים המתאימים לכל המשפחה.","tip":"מומלץ לשלב את הביקור עם טיול בטיילת טבריה או ארוחה באחת המסעדות שעל שפת הכנרת."},{"name":"חמת גדר","region":"צפון","category":"מרחצאות חמים, פארק נופש ובעלי חיים","ages":"כל המשפחה","cost":"בתשלום","duration":"חצי יום–יום שלם","why":"אתר נופש הכולל מעיינות חמים טבעיים, בריכות, מתחם תנינים ואזורי מנוחה.","tip":"מומלץ לשלב בין הרחצה במעיינות לבין ביקור בחוות התנינים ולהביא כפכפים להליכה בין הבריכות."},{"name":"גן החיות הלימודי חיפה","region":"חיפה והכרמל","category":"גן חיות","ages":"כל המשפחה","cost":"בתשלום","duration":"2–3 שעות","why":"מגוון בעלי חיים, אזורים מוצלים ונוף יפה לעיר ולמפרץ.","tip":"להגיע בבוקר כשהחיות פעילות יותר."},{"name":"הגנים הבהאיים (חיפה)","region":"חיפה והכרמל","category":"גנים ותצפית","ages":"כל המשפחה","cost":"חינם","duration":"כשעה","why":"אחד המקומות היפים בארץ – טרסות ירוקות, נוף לים ותצפית מושלמת על חיפה.","tip":"שלבו עם סיבוב במושבה הגרמנית לארוחה או גלידה."},{"name":"טיילת לואי (חיפה)","region":"חיפה והכרמל","category":"תצפית וטיילת","ages":"כל המשפחה","cost":"חינם","duration":"שעה–שעתיים","why":"אחת התצפיות היפות בארץ – נוף פנורמי על מפרץ חיפה והים.","tip":"מומלץ להגיע לקראת שקיעה לתמונות מושלמות."},{"name":"מוזיאון המדעטק (חיפה)","region":"חיפה והכרמל","category":"מוזיאון מדע אינטראקטיבי","ages":"5+","cost":"בתשלום","duration":"2–4 שעות","why":"מוזיאון חווייתי עם תערוכות אינטראקטיביות שילדים יכולים לגעת, לשחק וללמוד.","tip":"להגיע מוקדם – המקום עמוס מאוד בחופשות."},{"name":"מוזיאון רכבת ישראל (חיפה מזרח)","region":"חיפה והכרמל","category":"מוזיאון תחבורה","ages":"4+","cost":"בתשלום סמלי","duration":"שעה–שעתיים","why":"רכבות היסטוריות, קרונות ישנים וחוויה מעניינת לילדים חובבי רכבות.","tip":"לשלב עם ביקור באזור הנמל."},{"name":"חוף דדו / חוף הכרמל (חיפה)","region":"חיפה והכרמל","category":"חוף ים","ages":"כל המשפחה","cost":"חינם","duration":"חצי יום","why":"חוף מסודר עם טיילת, מסעדות, מקלחות ואווירה משפחתית.","tip":"להגיע מוקדם כדי לתפוס צל ולהימנע מעומס בשעות הצהריים."},{"name":"מערת אליהו (חיפה)","region":"חיפה והכרמל","category":"אתר דתי והיסטורי","ages":"כל המשפחה","cost":"חינם","duration":"30–60 דקות","why":"אתר מיוחד עם אווירה רוחנית ונוף לים התיכון.","tip":"שילוב מושלם עם טיול בטיילת בת גלים."},{"name":"פארק הכרמל (חי-בר / חניון האגם)","region":"חיפה והכרמל","category":"טבע ופיקניק","ages":"כל המשפחה","cost":"חינם","duration":"2–4 שעות","why":"טבע ירוק, מסלולים קצרים, פינות ישיבה מוצלות ואווירה רגועה.","tip":"להביא אוכל מהבית ולשלב פיקניק משפחתי."},{"name":"מעיין אלרועי (נחל הקישון – טבעון)","region":"חיפה והכרמל","category":"מעיין טבעי / נחל","ages":"כל המשפחה","cost":"חינם","duration":"1–2 שעות","why":"מעיין קטן ונעים עם מים רדודים, פינות ישיבה בטבע ואווירה רגועה מאוד – מתאים לעצירה קצרה או פיקניק קליל.","tip":"להגיע בשעות הבוקר או אחר הצהריים כדי להימנע מחום, ולהביא מחצלת לישיבה נוחה ליד המים."},{"name":"החי בפארק (קריית מוצקין)","region":"חיפה והכרמל","category":"גן חיות","ages":"כל המשפחה","cost":"בתשלום","duration":"2–3 שעות","why":"גן חיות גדול עם קופים, ג׳ירפות, זוחלים, עופות ופינות מוצלות.","tip":"אפשר לשלב עם ביקור בפארק הסמוך."},{"name":"סטלה מאריס (רכבל ותצפית הכרמל)","region":"חיפה והכרמל","category":"רכבל ותצפית","ages":"כל המשפחה","cost":"בתשלום","cost_note":"רכבל בתשלום / תצפית חינם","duration":"1–2 שעות","why":"רכבל קצר ומרהיב שעולה מהחוף לסטלה מאריס עם תצפית מדהימה על מפרץ חיפה והים.","tip":"לעלות ברכבל ולרדת ברגל או להפך כדי ליהנות מהנוף משני הכיוונים."},{"name":"הגשר התלוי (נשר – פארק נשר)","region":"חיפה והכרמל","category":"טבע ומסלול הליכה","ages":"5+","cost":"חינם","duration":"1–2 שעות","why":"מסלול טבע קצר ומרשים הכולל הליכה בין שבילים ירוקים וגשר תלוי מעל נחל, עם נוף יפה ואווירה כיפית למשפחות.","tip":"מומלץ להגיע מוקדם בבוקר או לקראת שקיעה, ולהימנע משעות חום כבדות כי רוב המסלול פתוח לשמש."},{"name":"פארק הכט (חיפה)","region":"חיפה והכרמל","category":"פארק עירוני + טיילת חוף","ages":"כל המשפחה","cost":"חינם","duration":"1–3 שעות","why":"פארק ענק לאורך הים עם שבילי אופניים, מדשאות ומתחמי משחקים לילדים ממש על קו החוף.","tip":"מושלם לשעות אחר הצהריים עם רוח מהים ופיקניק קליל."},{"name":"גן הפסלים (חיפה – שדרות הציונות)","region":"חיפה והכרמל","category":"אומנות ותצפית","ages":"כל המשפחה","cost":"חינם","duration":"30–60 דקות","why":"גן פתוח עם פסלים מיוחדים ונוף פנורמי על העיר והים – מקום קצר ומרשים מאוד.","tip":"עצירה קצרה מעולה בדרך לכרמל או לטיילת לואי."},{"name":"מוזיאון חיל הים וחיל ההעפלה (חיפה)","region":"חיפה והכרמל","category":"מוזיאון ימי","ages":"6+","cost":"בתשלום","duration":"1–2 שעות","why":"ספינות, צוללות ותצוגות היסטוריות מרתקות לילדים שמתעניינים בים.","tip":"מעולה לשילוב עם ביקור בטיילת בת גלים."},{"name":"בא לגן (יגור)","region":"חיפה והכרמל","category":"חווה חקלאית / פינת חי / קטיף","ages":"כל המשפחה","cost":"בתשלום","duration":"2–3 שעות","why":"חווה משפחתית נעימה עם פינות חי, פעילויות לילדים, קטיף עונתי ואווירה כפרית ורגועה.","tip":"מומלץ לבדוק מראש אילו פעילויות מתקיימות ביום הביקור (קטיף/האכלות), ולהגיע בשעות הבוקר כשהחיות פעילות יותר."},{"name":"שמורת נחל פולג","region":"השרון","category":"מסלול טבע","ages":"5+","cost":"חינם","duration":"1–2 שעות","why":"מסלול קצר עם תצפית יפה לים ושילוב בין דיונות לחוף.","tip":"להגיע בשעות הבוקר לפני שהחום מתחיל."},{"name":"פארק רעננה","region":"השרון","category":"פארק עירוני גדול","ages":"כל המשפחה","cost":"חינם","cost_note":"חוץ מהשייט והרכבת","duration":"שעה–3 שעות","why":"פארק ענק עם אגם, מתקני משחקים, בעלי חיים, שייט בסירה, סיור ברכבת, שבילי הליכה ופינות ישיבה מוצלות.","tip":"מושלם לפיקניק בשעות אחר הצהריים."},{"name":"אגמון חפר (עמק חפר)","region":"השרון","category":"טבע וצפרות","ages":"כל המשפחה","cost":"חינם","duration":"1–3 שעות","why":"אגם טבעי עם שבילי הליכה, בעלי חיים ונוף רגוע.","tip":"מומלץ להביא משקפת לצפייה בציפורים."},{"name":"חוף בית ינאי","region":"השרון","category":"חוף ים ושמורה","ages":"כל המשפחה","cost":"חינם","duration":"חצי יום","why":"חוף רחב עם דיונות, זרימה טבעית ונוף פתוח לים.","tip":"להביא שמשייה – אין הרבה צל טבעי."},{"name":"חוף פולג (נתניה)","region":"השרון","category":"חוף ים","ages":"כל המשפחה","cost":"חינם","duration":"חצי יום","why":"חוף מסודר עם גלישה, טיילת ואווירה צעירה.","tip":"מתאים במיוחד למשפחות עם ילדים גדולים יותר שאוהבים ים פעיל."},{"name":"פארק השלולית (נתניה)","region":"השרון","category":"טבע עירוני","ages":"כל המשפחה","cost":"חינם","duration":"שעה–שעתיים","why":"פארק ירוק עם מסלולי הליכה סביב אגם קטן ומתקני משחקים.","tip":"מקום מושלם לעצירה קצרה באמצע יום טיול בנתניה."},{"name":"פארק הרצליה","region":"השרון","category":"פארק עירוני גדול","ages":"כל המשפחה","cost":"חינם","duration":"שעה–3 שעות","why":"מדשאות ענק, מתקני משחקים ואגם קטן עם אווירה רגועה.","tip":"מושלם לשילוב עם חוף הרצליה הקרוב."},{"name":"שמורת תל אפק (אפק-ירקון)","region":"השרון","category":"אתר היסטורי וטבע","ages":"כל המשפחה","cost":"בתשלום","duration":"2–3 שעות","why":"שילוב של מבצר עתיק, בריכות מים ונוף ירוק פתוח.","tip":"להגיע בשעות הבוקר לשקט יחסי ופחות עומס."},{"name":"פלנתניה","region":"השרון","category":"מדע ואסטרונומיה","ages":"6+","cost":"בתשלום","duration":"1–2 שעות","why":"חוויית חלל אינטראקטיבית עם פלנטריום והדמיות כוכבים.","tip":"להזמין כרטיסים מראש – המקומות מוגבלים."},{"name":"אוטופיה (קיבוץ בחן)","region":"השרון","category":"פארק פרחים ואטרקציות","ages":"כל המשפחה","cost":"בתשלום","duration":"2–3 שעות","why":"גנים טרופיים, פרחים, מבוכים וצמחים מיוחדים בתוך מתחם ממוזג וחיצוני.","tip":"מעולה ליום חם במיוחד כי יש גם אזורים מקורים."},{"name":"חוות התוכים בכפר הס","region":"השרון","category":"בעלי חיים ופינת ליטוף","ages":"כל המשפחה","cost":"בתשלום","duration":"שעה–שעתיים","why":"מפגש עם עשרות סוגי תוכים צבעוניים, האכלות ואפשרות להצטלם איתם.","tip":"בדקו מראש את שעות ההאכלה – זו אחת החוויות המיוחדות במקום."},{"name":"כפר הארנבונים (כפר הס)","region":"השרון","category":"פינת ליטוף","ages":"2–8","cost":"בתשלום","duration":"שעה–שעתיים","why":"מפגש קרוב עם ארנבונים, שרקנים ובעלי חיים קטנים בסביבה נעימה.","tip":"מתאים במיוחד לילדים צעירים שאוהבים ללטף ולהאכיל בעלי חיים."},{"name":"פארק יצחק אוחיון (פתח תקווה)","region":"השרון","category":"פארק עירוני גדול","ages":"כל המשפחה","cost":"חינם","duration":"שעה–3 שעות","why":"פארק גדול ומטופח עם אגם, מזרקות מים, שבילי הליכה ומתקני משחקים לילדים.","tip":"מומלץ להגיע בשעות אחר הצהריים – יש בריזה נעימה ואזורי צל טובים לפיקניק."},{"name":"מיני גולף נאון (פתח תקווה)","region":"השרון","category":"פעילות משפחתית / משחק","ages":"6+","cost":"בתשלום","duration":"שעה–שעתיים","why":"מיני גולף באווירת ניאון זוהרת – חוויה כיפית, קלילה ומצולמת במיוחד.","tip":"מעולה לשעות ערב – התאורה עושה את כל החוויה."},{"name":"ימית 2000 (חולון)","region":"מרכז","category":"פארק מים","ages":"כל המשפחה","cost":"בתשלום","duration":"חצי יום–יום שלם","why":"פארק מים גדול עם מגלשות, בריכות גלים ואזורי ילדים מוצלים.","tip":"להזמין כרטיסים מראש ולבוא עם קרם הגנה כל הזמן."},{"name":"סופרלנד (ראשל״צ)","region":"מרכז","category":"פארק שעשועים","ages":"6+","cost":"בתשלום","duration":"חצי יום–יום שלם","why":"לונה פארק גדול עם מתקנים לכל הגילאים – רכבות הרים, מתקני מים ואזורי ילדים.","tip":"להגיע מיד בפתיחה כדי להספיק את המתקנים הפופולריים בלי תורים."},{"name":"פארק פרס (חולון)","region":"מרכז","category":"פארק עירוני","ages":"כל המשפחה","cost":"חינם","duration":"שעה–3 שעות","why":"פארק גדול עם אגם, מדשאות, מתקני משחקים ומזרקות מים בקיץ.","tip":"מושלם לשעות אחר הצהריים עם גלידה ליד האגם."},{"name":"מוזיאון הילדים חולון","region":"מרכז","category":"מוזיאון חווייתי","ages":"3–12","cost":"בתשלום","duration":"2–3 שעות","why":"חוויות אינטראקטיביות וסיורים מיוחדים לילדים בנושאים שונים.","tip":"להזמין סיור מראש – כל ביקור הוא מודרך בלבד."},{"name":"נמל תל אביב","region":"מרכז","category":"טיילת ואטרקציות עירוניות","ages":"כל המשפחה","cost":"חינם","duration":"שעה–3 שעות","why":"טיילת יפה על הים עם מסעדות, חנויות ואווירה מושלמת לשקיעה.","tip":"להגיע בשעות הערב – בריזה מושלמת ואווירה חיה."},{"name":"פארק הירקון (תל אביב)","region":"מרכז","category":"פארק טבע עירוני","ages":"כל המשפחה","cost":"חינם","duration":"חצי יום","why":"מדשאות ענק, שבילי אופניים, פינות פיקניק ואגם לשיט סירות.","tip":"לשלב עם השכרת אופניים או סירת פדלים."},{"name":"לונה פארק תל אביב","region":"מרכז","category":"פארק שעשועים","ages":"כל המשפחה","cost":"בתשלום","duration":"חצי יום–יום שלם","why":"אחד מפארקי השעשועים האהובים בישראל עם עשרות מתקנים – רכבות הרים, גלגל ענק, קרוסלות, רכבת לילדים, מתקני אקסטרים ואזורי משחק לקטנטנים.","tip":"מומלץ לרכוש כרטיסים מראש דרך המועדונים ולהגיע עם פתיחת הפארק כדי ליהנות מהמתקנים הפופולריים לפני שהתורים מתארכים."},{"name":"מוזיאון האשליות (תל אביב)","region":"מרכז","category":"חוויה ואשליות","ages":"כל המשפחה","cost":"בתשלום","duration":"1–2 שעות","why":"עולם של אשליות אופטיות, תמונות מגניבות וחוויה מושלמת לצילומים.","tip":"להטעין טלפונים מראש – תרצו לצלם הרבה."},{"name":"גן המדע (מכון ויצמן)","region":"מרכז","category":"מוזיאון מדע פתוח","ages":"5+","cost":"בתשלום","duration":"2–3 שעות","why":"מדע חווייתי בחוץ עם מתקנים שמדגימים תופעות טבע בצורה אינטראקטיבית.","tip":"להגיע בשעות הבוקר לפני עומס קבוצות."},{"name":"מוזיאון הספורט היהודי העולמי (כפר המכביה, רמת גן)","region":"מרכז","category":"מוזיאון אינטראקטיבי","ages":"6+","cost":"בתשלום","duration":"1–2 שעות","why":"מוזיאון חדשני המציג את סיפורי הספורטאים היהודים והישראלים באמצעות תצוגות אינטראקטיביות ומשחקים.","tip":"כדאי לשלב עם ביקור בקאנטרי כפר המכביה ועגלות הקפה במתחם."},{"name":"מימדיון (תל אביב)","region":"מרכז","category":"פארק מים","ages":"כל המשפחה","cost":"בתשלום","duration":"חצי יום–יום שלם","why":"פארק מים גדול עם מגלשות, בריכות גלים ואזורי הצללה.","tip":"להגיע באמצע השבוע – הרבה פחות עומס."},{"name":"מוזיאון אגם (ראשון לציון)","region":"מרכז","category":"מוזיאון אומנות","ages":"כל המשפחה","cost":"בתשלום","duration":"שעה–שעתיים","why":"מוזיאון צבעוני ואינטראקטיבי שמציג אומנות קינטית מרהיבה.","tip":"מעולה לשילוב עם פעילות קצרה בעיר."},{"name":"הספארי (רמת גן)","region":"מרכז","category":"גן חיות וספארי פתוח","ages":"כל המשפחה","cost":"בתשלום","duration":"3–5 שעות","why":"נסיעה בין בעלי חיים בשטח פתוח ולאחריה ביקור בגן החיות – אחת האטרקציות המשפחתיות האהובות בישראל.","tip":"התחילו בנסיעה בספארי ברכב ורק אחר כך המשיכו לסיור הרגלי."},{"name":"פלייבוקס (ראשון לציון)","region":"מרכז","category":"מתחם אינטראקטיבי (סימולציית ריחוף/צניחה)","ages":"4+","cost":"בתשלום","duration":"1–2 שעות","why":"חוויה מטורפת אקסטרימית ומיוחדת במינה בארץ.","tip":"לשריין מקום מראש – לא לבעלי לב חלש! ממליצה לשלב עם עגלת הקפה / ביקור בביס פלאנט."},{"name":"חי כיף (ראשון לציון)","region":"מרכז","category":"גן חיות ופינת ליטוף","ages":"כל המשפחה","cost":"בתשלום","duration":"2–3 שעות","why":"גן חיות מטופח עם מגוון בעלי חיים, פינת ליטוף ואזורי משחק לילדים.","tip":"מומלץ להגיע בשעות הבוקר כשהחיות פעילות יותר."},{"name":"פארק רוי בוי (ראשון לציון)","region":"מרכז","category":"אטרקציות לילדים, הופעות, פינות ליטוף וקטיף","ages":"1–12","cost":"בתשלום","duration":"2–4 שעות","why":"פארק חווייתי לילדים עם מתקנים, משחקים, פינות ליטוף, אזורי פעילות והפעלות באווירה צבעונית וכיפית, מופע מושקע של רוי בוי.","tip":"להביא בגדי ים, מגבות ובגדים להחלפה ולא לפספס את המופע של רוי בוי וצילום אישי בסוף."},{"name":"גן החיות התנ״כי (ירושלים)","region":"ירושלים","category":"גן חיות","ages":"כל המשפחה","cost":"בתשלום","duration":"חצי יום","why":"גן חיות גדול ומושקע עם אזורים טבעיים, אגם מרכזי ומגוון רחב של בעלי חיים.","tip":"להגיע מוקדם ולתכנן מסלול מסודר כדי לא להתעייף בחום."},{"name":"עין לבן (ירושלים)","region":"ירושלים","category":"מעיין טבעי","ages":"כל המשפחה","cost":"חינם","duration":"1–2 שעות","why":"מעיין נעים בתוך אזור ירוק ושקט, מושלם לריענון קצר בטבע.","tip":"לבוא בשעות הבוקר ולוודא שהמים במפלס מתאים לשחייה."},{"name":"עין חמד (מבשרת ציון)","region":"ירושלים","category":"פארק טבע ונחל","ages":"כל המשפחה","cost":"בתשלום סמלי","duration":"2–3 שעות","why":"פארק ירוק עם פלגי מים, שולחנות פיקניק וטבע נעים ומוצל.","tip":"מקום מושלם לפיקניק משפחתי רגוע."},{"name":"גן לאומי קסטל","region":"ירושלים","category":"אתר היסטורי ותצפית","ages":"5+","cost":"בתשלום","duration":"1–2 שעות","why":"אתר מורשת קרבות עם תצפית מרהיבה על ירושלים והרי יהודה.","tip":"מעולה לשלב עם ביקור קצר באזור מבשרת ציון."},{"name":"גן לאומי הרי יהודה / סטף","region":"ירושלים","category":"טבע ומסלולים","ages":"כל המשפחה","cost":"חינם","duration":"1–3 שעות","why":"מסלולי הליכה בין טרסות חקלאיות עתיקות ומעיינות קטנים.","tip":"להגיע בשעות הבוקר או אחר הצהריים כדי להימנע מחום."},{"name":"מערת הנטיפים (שמורת אבשלום)","region":"ירושלים","category":"אתר טבע ומערות","ages":"כל המשפחה","cost":"בתשלום","duration":"שעה–שעתיים","why":"מערה מרהיבה עם נטיפים וזקיפים בצורות טבעיות מדהימות.","tip":"הסיור קצר יחסית – מתאים לשלב עם עוד עצירה באזור."},{"name":"מוזיאון המדע ירושלים","region":"ירושלים","category":"מוזיאון אינטראקטיבי","ages":"כל המשפחה","cost":"בתשלום","duration":"3–5 שעות","why":"מוזיאון ממוזג ואינטראקטיבי, חוויתי לילדים בכל הגילאים, מלמד ומשלב משחק, התנסויות והמון כיף.","tip":"לשריין כרטיסים מראש ולהביא בגדי החלפה."},{"name":"עין כרם (ירושלים)","region":"ירושלים","category":"שכונה היסטורית","ages":"כל המשפחה","cost":"חינם","duration":"1–2 שעות","why":"שכונה קסומה עם סמטאות ציוריות, כנסיות ובתי קפה מיוחדים.","tip":"מקום מושלם לטיול רגוע בשעות הערב."},{"name":"מוזיאון ישראל (ירושלים)","region":"ירושלים","category":"מוזיאון אמנות והיסטוריה","ages":"כל המשפחה","cost":"בתשלום","duration":"2–3 שעות","why":"אחד המוזיאונים החשובים בארץ עם תערוכות אמנות, ארכיאולוגיה ותצוגת מגילות ים המלח.","tip":"להתמקד באגף הילדים ובגנים החיצוניים – חוויה שמתאימה גם למשפחות."},{"name":"האקווריום של ישראל (ירושלים)","region":"ירושלים","category":"אקווריום וחוויה ימית","ages":"כל המשפחה","cost":"בתשלום","duration":"1–2 שעות","why":"אקווריום גדול ומושקע עם מגוון בעלי חיים ימיים, הסברים חינוכיים וחוויה רגועה וממוזגת.","tip":"מושלם ליום חם במיוחד בירושלים – כל הביקור במקום ממוזג ונוח לילדים."},{"name":"עיר דוד","region":"ירושלים","category":"אתר היסטורי","ages":"כל המשפחה","cost":"בתשלום","duration":"2–3 שעות","why":"מסע בזמן אל ירושלים הקדומה עם חפירות, מנהרות וחוויות מולטימדיה.","tip":"מומלץ לשלב סיור מודרך להבנה מלאה של המקום."},{"name":"האומגה הארוכה בארץ","region":"ירושלים","category":"אטרקציית אקסטרים","ages":"6+","cost":"בתשלום","duration":"כשעה","why":"חוויית אקסטרים עם אומגה ונוף הרים מרהיב.","tip":"להזמין מראש – הפעילות מוגבלת לפי קבוצות."},{"name":"הגשר התלוי הכי ארוך בארץ","region":"ירושלים","category":"טבע ואטרקציה","ages":"כל המשפחה","cost":"חינם","duration":"שעה–שעתיים","why":"גשר תלוי מרשים בלב טבע ירוק, חוויה קצרה ומיוחדת לילדים.","tip":"לשלב עם פיקניק באזור ולבקר בחווה בגיא – כניסה חינם."},{"name":"קיפצובה (קיבוץ צובה)","region":"ירושלים","category":"משחקייה ופארק שעשועים","ages":"2–12","cost":"בתשלום","duration":"2–4 שעות","why":"מתחם ענק לילדים קטנים עם מתקני לונה פארק, טרמפולינות ומשחקיות.","tip":"מושלם ליום עם ילדים קטנים – מוצל ומסודר."},{"name":"מעלית הזמן (ירושלים)","region":"ירושלים","category":"חוויה קולנועית אינטראקטיבית","ages":"6+","cost":"בתשלום","duration":"כשעה","why":"חוויה חדשנית שמכניסה למסע בזמן דרך סרטים ותנועה בכיסאות חכמים, ומספרת את סיפורה של ירושלים בצורה חווייתית ומרתקת.","tip":"מומלץ לשלב את הביקור עם טיול בעיר העתיקה או במתחם ממילא שנמצא קרוב."},{"name":"פארק ג׳ננה (קריית ענבים)","region":"ירושלים","category":"פארק טבע ומשחקים","ages":"כל המשפחה","cost":"בתשלום","duration":"2–3 שעות","why":"פארק פתוח עם מתקני משחק, אזורי מים, מרחבים ירוקים ואטרקציות קלילות לילדים באווירה כפרית.","tip":"מומלץ לשלב עם טיול בהרי ירושלים – מזג האוויר נעים יותר מהעיר."},{"name":"נחל דוד (עין גדי)","region":"דרום","category":"מסלול טבע ומים","ages":"5+","cost":"בתשלום","duration":"2–3 שעות","why":"מסלול מדברי עם מפלים ובריכות מים באמצע המדבר.","tip":"להביא נעלי מים, הרבה מים ולהתחיל מוקדם בבוקר."},{"name":"עין פשחה (עינות צוקים)","region":"דרום","category":"שמורת טבע ומים","ages":"כל המשפחה","cost":"בתשלום","duration":"2–4 שעות","why":"מעיינות טבעיים בלב המדבר עם בריכות רדודות ונוף ייחודי.","tip":"להביא נעלי מים, להישאר באזורים המוצלים ולהימנע מהשעות החמות."},{"name":"מכתש רמון (מצפה רמון)","region":"דרום","category":"טבע ותצפית","ages":"כל המשפחה","cost":"חינם","duration":"1–3 שעות","why":"אחד האתרים המרהיבים בישראל – תצפית על מכתש עצום ונוף מדברי עוצר נשימה.","tip":"שקיעה היא הזמן הכי יפה לביקור."},{"name":"פארק תמנע","region":"דרום","category":"טבע ומסלולים","ages":"כל המשפחה","cost":"בתשלום","duration":"חצי יום–יום שלם","why":"פארק מדברי מרהיב עם נופי סלע ייחודיים, מסלולי הליכה ואגם קטן.","tip":"להגיע מוקדם ולשלב סיור מודרך או רכיבה על אופניים."},{"name":"חי-רמון (מצפה רמון)","region":"דרום","category":"מרכז חיות מדבר","ages":"4+","cost":"בתשלום","duration":"1–2 שעות","why":"מפגש עם חיות מדבר ייחודיות והיכרות עם החיים באזור הרמון.","tip":"מעולה לשלב אחרי תצפית במכתש."},{"name":"חוות האלפקות (מצפה רמון)","region":"דרום","category":"חוות בעלי חיים","ages":"כל המשפחה","cost":"בתשלום","duration":"2–3 שעות","why":"מפגש עם אלפקות ולאמות, סיורים בחווה ואווירה מדברית מיוחדת.","tip":"אפשר לשלב עם ביקור במכתש רמון באותו יום."},{"name":"חי נגב (קיבוץ רביבים)","region":"דרום","category":"פארק בעלי חיים","ages":"כל המשפחה","cost":"בתשלום","duration":"2–3 שעות","why":"מגוון בעלי חיים מדבריים, פינות ליטוף ופעילויות לכל המשפחה.","tip":"מומלץ להגיע בשעות הבוקר בחודשי הקיץ."},{"name":"פארק אשכול (בשור)","region":"דרום","category":"פארק מים וטבע","ages":"כל המשפחה","cost":"בתשלום סמלי","duration":"3–5 שעות","why":"פארק עם מעיינות, בריכות טבעיות ופינות פיקניק מוצלות.","tip":"להביא מחצלת ואוכל ליום שלם במקום."},{"name":"נחל הבשור","region":"דרום","category":"מסלול טבע","ages":"5+","cost":"חינם","duration":"1–3 שעות","why":"מסלול הליכה רגוע עם נוף פתוח, גשרים ומרחבים ירוקים.","tip":"להגיע בשעות הבוקר לפני החום הכבד."},{"name":"פארק גולדה (מרחב ניצנה)","region":"דרום","category":"פארק טבע ומים","ages":"כל המשפחה","cost":"בתשלום סמלי","duration":"2–4 שעות","why":"אגם מדברי עם בריכות, מדשאות ופינות ישיבה מוצלות.","tip":"מקום מושלם לפיקניק משפחתי רגוע במדבר."},{"name":"מצפה התת ימי (אילת)","region":"אילת","category":"אקווריום ומוזיאון ימי","ages":"כל המשפחה","cost":"בתשלום","duration":"2–3 שעות","why":"תצפית תת-ימית נדירה עם דגים, כרישים ושוניות אלמוגים.","tip":"לשלב עם חוף אלמוג הסמוך."},{"name":"ריף הדולפינים","region":"אילת","category":"אטרקציית ים ובעלי חיים","ages":"כל המשפחה","cost":"בתשלום","duration":"2–4 שעות","why":"מפגש ייחודי עם דולפינים בסביבה טבעית וים פתוח.","tip":"להזמין מראש ולהגיע מוקדם בבוקר כשהים רגוע."},{"name":"פארק המים ווטרלנד (אילת)","region":"אילת","category":"פארק מים","ages":"כל המשפחה","cost":"בתשלום","duration":"חצי יום","why":"מגלשות מים, בריכות ואטרקציות רטובות לכל הגילאים.","tip":"להגיע באמצע השבוע כדי להימנע מעומס."},{"name":"חוף האלמוגים","region":"אילת","category":"חוף ושמורת טבע","ages":"כל המשפחה","cost":"בתשלום","duration":"חצי יום","why":"שנורקלינג בין אלמוגים ודגים צבעוניים במים צלולים.","tip":"להביא ציוד שנורקל או לשכור במקום."},{"name":"טופ 94","region":"אילת","category":"מתחם אטרקציות, פארק חבלים, טיפוס, קארטינג ופיינטבול","ages":"כל המשפחה","cost":"בתשלום","duration":"2–3 שעות","why":"מתחם מקורה שמציע מלא פעילויות אקסטרימיות ומהנות לכל המשפחה עם חוויה בלתי נשכחת!","tip":"ממליצה לרכוש כרטיסים מוזלים דרך המועדונים ולשריין טרם הגעה."},{"name":"טיילת אילת","region":"אילת","category":"טיילת עירונית","ages":"כל המשפחה","cost":"חינם","duration":"שעה–3 שעות","why":"שילוב של ים, מסעדות, חנויות ואווירת חופש מושלמת.","tip":"להגיע בערב – מזג אוויר נעים ואווירה חיה."},{"name":"אייס מול אילת","region":"אילת","category":"קניון ואטרקציה","ages":"כל המשפחה","cost":"בתשלום","duration":"2–4 שעות","why":"קניון עם החלקה על הקרח, חנויות ואטרקציות לילדים – מפלט מושלם מהחום.","tip":"מעולה לשעות הצהריים החמות באילת."},{"name":"חוות הגמלים (אילת)","region":"אילת","category":"חוות בעלי חיים ואטרקציות","ages":"4+","cost":"בתשלום","duration":"2–3 שעות","why":"רכיבה על גמלים, פעילויות אתגריות ונוף מדברי מרשים.","tip":"מומלץ להגיע לקראת אחר הצהריים כשהטמפרטורות נעימות יותר."},{"name":"מחנה בבית","region":"פעילויות בבית","category":"פעילות ביתית","ages":"כל המשפחה","cost":"חינם","duration":"ערב–לילה","why":"בונים אוהל בסלון, משחקים, סיפורים ופנסים – חוויה לילדים בלי לצאת מהבית.","tip":"להכין ״תעודת מחנה״ לילדים – זה משדרג את החוויה."},{"name":"חפש את המטמון בבית","region":"פעילויות בבית","category":"משחק משפחתי","ages":"4+","cost":"חינם","duration":"30–60 דקות","why":"משחק חווייתי עם רמזים ומשימות בכל הבית.","tip":"להכין פרס קטן בסוף המסלול."},{"name":"סדנת שף ביתית – עוגיות","region":"פעילויות בבית","category":"בישול משפחתי","ages":"3+","cost":"חינם","duration":"1–2 שעות","why":"אופים יחד עוגיות, לומדים מדידות ונהנים מהתוצאה.","tip":"לתת לילדים לקשט את העוגיות בעצמם."},{"name":"סרט משפחתי עם פופקורן","region":"פעילויות בבית","category":"פעילות פנאי","ages":"כל המשפחה","cost":"חינם","duration":"ערב","why":"ערב רגוע בבית עם סרט, פופקורן ואווירת קולנוע.","tip":"לכבות אורות ולהכין כרטיסי ״קולנוע ביתי״."},{"name":"ערב יצירה משפחתי","region":"פעילויות בבית","category":"יצירה","ages":"כל המשפחה","cost":"חינם","duration":"שעה–שעתיים","why":"ציור, גזירה, הדבקה ויצירת עבודות קיץ.","tip":"להכין תערוכה קטנה בבית ליצירות."},{"name":"מסיבת פיג׳מות משפחתית","region":"פעילויות בבית","category":"פעילות ביתית / ערב חווייתי","ages":"כל המשפחה","cost":"חינם","duration":"ערב שלם","why":"ערב כיפי בבית עם פיג׳מות, נשנושים, משחקים וסרט משפחתי.","tip":"להכין ״תפריט קולנוע״ קטן עם פופקורן, שתייה וחטיפים."},{"name":"חדר בריחה ביתי","region":"פעילויות בבית","category":"משחק חשיבה משפחתי","ages":"6+","cost":"חינם","duration":"45–90 דקות","why":"יוצרים בבית משחק חידות ומשימות שמובילות לרמז הבא עד לפתרון הסופי.","tip":"להכין פרס קטן בסוף כדי להעלות מוטיבציה לילדים."},{"name":"ערב ״מדינת ילדים״","region":"פעילויות בבית","category":"משחק תפקידים","ages":"5+","cost":"חינם","duration":"ערב","why":"כל ילד בוחר תפקיד (שף, מוכר, מורה וכו׳) ויוצרים עולם דמיוני בבית.","tip":"להוסיף ״כסף מדומה״ כדי להפוך את המשחק לחוויה אמיתית."},{"name":"תחרות ״מאסטר שף משפחתי״","region":"פעילויות בבית","category":"בישול ומשחק משפחתי","ages":"כל המשפחה","cost":"חינם","duration":"1–2 שעות","why":"כל אחד מקבל משימה להכין מנה קטנה (סלט, קינוח, טוסט מושקע) ובסוף עושים טעימות משפחתיות.","tip":"להכין ״שופטים״ בין הילדים עם מדבקות ניקוד – זה הופך את זה לחוויה אמיתית."},{"name":"בנייה מלגו/קוביות – אתגר משפחתי","region":"פעילויות בבית","category":"יצירה ואתגר","ages":"3+","cost":"חינם","duration":"1–2 שעות","why":"כל אחד בונה לפי משימה (הבית הכי גבוה, העיר הכי יפה, מכונית חלומות).","tip":"לתת זמן מוגבל – זה הופך את זה לאתגר מצחיק ותחרותי."},{"name":"הקמת בית קפה ביתי","region":"פעילויות בבית","category":"משחק תפקידים","ages":"כל המשפחה","cost":"חינם","duration":"שעה–שעתיים","why":"הופכים את הבית לבית קפה – תפריט, מלצרים, הזמנות וכסף דמיוני.","tip":"להכין שלט ותפריט אמיתי – זה משדרג את החוויה מאוד."},{"name":"מסלול מכשולים בבית / בגינה","region":"פעילויות בבית","category":"פעילות תנועה","ages":"3+","cost":"חינם","duration":"30–60 דקות","why":"יוצרים מסלול עם כריות, כיסאות וחבלים – קפיצות, זחילות ואתגרים.","tip":"להוסיף סטופר כדי להפוך את זה לתחרות משפחתית."},{"name":"ערב ״סיפורי ילדות של ההורים״","region":"פעילויות בבית","category":"פעילות משפחתית","ages":"כל המשפחה","cost":"חינם","duration":"שעה","why":"ההורים מספרים סיפורי ילדות, והילדים משווים לחיים שלהם היום.","tip":"להקליט את הסיפורים – זה מזכרת מדהימה לעתיד."},{"name":"יום ״בלי מסכים״ + קופסת הפתעות","region":"פעילויות בבית","category":"אתגר משפחתי","ages":"כל המשפחה","cost":"חינם","duration":"יום שלם","why":"מנתקים מסכים ומפעילים קופסה עם רעיונות לפעילויות (משחקים, משימות, יצירה).","tip":"להכין מראש פתקים מצחיקים שכל ילד שולף בתורו."}],"checklist":["קרם הגנה","כובע","מים קרים","בגדים להחלפה","נעלי מים","מחצלת / פיקניק","מטען נייד","נשנושים לילדים","מגבונים","משקפי שמש"]};
+const ACTS = DATA.activities;
+
+const COST_CLASS = {"חינם":"free", "בתשלום סמלי":"sym", "בתשלום":"paid"};
+const ALL_COSTS  = DATA.meta.legend.cost;
+const REGIONS    = DATA.meta.legend.regions;
+
+const state = {q:"", region:null, costs:new Set(ALL_COSTS)};
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* highlight search hits without letting user input become markup */
+function hl(text, q){
+  const safe = esc(text);
+  if(!q) return safe;
+  const needle = esc(q).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return safe.replace(new RegExp(needle, "gi"), m => "<mark>" + m + "</mark>");
+}
+
+const haystack = a => (a.name+" "+a.category+" "+a.why+" "+a.tip+" "+a.region).toLowerCase();
+ACTS.forEach(a => a._hay = haystack(a));
+
+const matchesExceptRegion = a =>
+  state.costs.has(a.cost) && (!state.q || a._hay.includes(state.q));
+
+const visible = () => ACTS.filter(a =>
+  matchesExceptRegion(a) && (!state.region || a.region === state.region));
+
+/* ---------- chips ---------- */
+function buildChips(){
+  const rw = $("regions"), cw = $("costs");
+
+  const mkAll = document.createElement("button");
+  mkAll.type = "button"; mkAll.className = "chip"; mkAll.dataset.region = "";
+  mkAll.innerHTML = 'הכל <span class="n"></span>';
+  rw.appendChild(mkAll);
+
+  REGIONS.forEach(r => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "chip"; b.dataset.region = r;
+    b.innerHTML = esc(r) + ' <span class="n"></span>';
+    rw.appendChild(b);
+  });
+
+  ALL_COSTS.forEach(c => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "chip cost " + COST_CLASS[c]; b.dataset.cost = c;
+    b.innerHTML = esc(c) + ' <span class="n"></span>';
+    cw.appendChild(b);
+  });
+
+  rw.addEventListener("click", e => {
+    const b = e.target.closest("button[data-region]"); if(!b) return;
+    state.region = b.dataset.region || null;
+    render();
+  });
+
+  cw.addEventListener("click", e => {
+    const b = e.target.closest("button[data-cost]"); if(!b) return;
+    const c = b.dataset.cost;
+    if(state.costs.has(c)) state.costs.delete(c); else state.costs.add(c);
+    if(state.costs.size === 0) ALL_COSTS.forEach(x => state.costs.add(x)); // never empty
+    render();
+  });
+}
+
+/* counts reflect the other active filters, so they stay truthful */
+function syncChips(){
+  document.querySelectorAll("#regions button[data-region]").forEach(b => {
+    const r = b.dataset.region;
+    const n = ACTS.filter(a => matchesExceptRegion(a) && (!r || a.region === r)).length;
+    b.setAttribute("aria-pressed", String((state.region || "") === r));
+    b.querySelector(".n").textContent = n;
+  });
+  document.querySelectorAll("#costs button[data-cost]").forEach(b => {
+    const c = b.dataset.cost;
+    const n = ACTS.filter(a =>
+      a.cost === c && (!state.region || a.region === state.region) &&
+      (!state.q || a._hay.includes(state.q))).length;
+    b.setAttribute("aria-pressed", String(state.costs.has(c)));
+    b.querySelector(".n").textContent = n;
+  });
+}
+
+/* ---------- cards ---------- */
+function card(a){
+  const q = state.q;
+  const cc = COST_CLASS[a.cost] || "paid";
+  return '<li class="card">' +
+    '<h2>' + hl(a.name, q) + '</h2>' +
+    '<div class="badges">' +
+      '<span class="badge region">📍 ' + esc(a.region) + '</span>' +
+      '<span class="badge ' + cc + '">' + esc(a.cost) + '</span>' +
+    '</div>' +
+    '<p class="meta">' +
+      '<span>' + hl(a.category, q) + '</span>' +
+      '<span>🧒 ' + esc(a.ages) + '</span>' +
+      '<span>⏱ ' + esc(a.duration) + '</span>' +
+    '</p>' +
+    '<p class="why">' + hl(a.why, q) + '</p>' +
+    (a.cost_note ? '<p class="cost-note">💰 ' + esc(a.cost_note) + '</p>' : '') +
+    '<div class="tip"><b>⭐ הטיפ של מורן</b>' + hl(a.tip, q) + '</div>' +
+  '</li>';
+}
+
+function render(){
+  const list = visible();
+  $("grid").innerHTML = list.map(card).join("");
+  $("grid").hidden = list.length === 0;
+  $("empty").hidden = list.length !== 0;
+  $("count").textContent = "מציג " + list.length + " מתוך " + ACTS.length + " פעילויות";
+  syncChips();
+}
+
+function reset(){
+  state.q = ""; state.region = null; state.costs = new Set(ALL_COSTS);
+  $("q").value = "";
+  render();
+}
+
+/* ---------- init ---------- */
+buildChips();
+$("checklist-items").innerHTML = DATA.checklist.map(i => "<li>" + esc(i) + "</li>").join("");
+$("q").addEventListener("input", e => { state.q = e.target.value.trim().toLowerCase(); render(); });
+$("reset").addEventListener("click", reset);
+$("print").addEventListener("click", () => { $("checklist").open = true; window.print(); });
+document.querySelector("[data-reset]").addEventListener("click", reset);
+render();
+</script>
+</body>
+</html>
